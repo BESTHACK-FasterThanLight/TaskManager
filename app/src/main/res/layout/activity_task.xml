@@ -194,7 +194,7 @@
         android:background="@android:color/background_light"
         android:orientation="horizontal"
         android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+        android:paddingRight="5dp"
         android:paddingTop="5dp">
 
         <ImageView
@@ -212,6 +212,13 @@
             android:hint="Написать комментарий..."
             android:inputType="textMultiLine"
             android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_message" />
     </LinearLayout>
 
 </RelativeLayout>
