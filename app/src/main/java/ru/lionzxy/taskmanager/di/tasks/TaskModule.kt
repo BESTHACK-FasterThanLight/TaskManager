@@ -23,6 +23,8 @@ class TaskModule {
         return TaskInteractor(repository)
     }
 
+    @Provides
+    @TaskScope
     fun provideRepository(): ITaskRepository {
         return TaskRepository()
     }

@@ -1,6 +1,7 @@
 package ru.lionzxy.taskmanager.di.tasks
 
 import dagger.Subcomponent
+import ru.lionzxy.taskmanager.view.menu.presenter.TaskPresenter
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -11,5 +12,5 @@ import dagger.Subcomponent
 @TaskScope
 @Subcomponent(modules = [TaskModule::class])
 interface TaskComponent {
-
+    fun inject(presenter: TaskPresenter)
 }

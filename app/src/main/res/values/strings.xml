@@ -27,4 +27,9 @@
     <string name="auth_login">Already register? Log In!</string>
     <string name="auth_button_register">Sign in</string>
     <string name="menu_perm">Permission denied</string>
+
+
+    <string name="add_project">Добавить проект</string>
+
+
 </resources>

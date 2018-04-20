@@ -1,7 +1,8 @@
 package ru.lionzxy.taskmanager.view.menu.ui
 
 import com.arellomobile.mvp.MvpView
-import ru.lionzxy.taskmanager.data.auth.UserApi
+import ru.lionzxy.taskmanager.data.model.Project
+import ru.lionzxy.taskmanager.data.model.Task
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -10,6 +11,7 @@ import ru.lionzxy.taskmanager.data.auth.UserApi
  */
 
 interface ITaskActivity : MvpView {
-    fun setList(users: List<UserApi>, login: String)
+    fun setProjects(projects: List<Project>)
+    fun onProjectCreated()
     fun onError()
 }

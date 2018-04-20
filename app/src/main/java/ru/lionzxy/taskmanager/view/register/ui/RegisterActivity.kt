@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 import ru.lionzxy.taskmanager.R
 import ru.lionzxy.taskmanager.utils.toast
 import ru.lionzxy.taskmanager.view.auth.ui.AuthActivity
-import ru.lionzxy.taskmanager.view.menu.ui.TaskFragment
+import ru.lionzxy.taskmanager.view.menu.ui.TaskListActivity
 import ru.lionzxy.taskmanager.view.register.presenter.RegisterPresenter
 
 /**
@@ -76,7 +76,7 @@ class RegisterActivity : MvpAppCompatActivity(), IRegisterView {
     }
 
     override fun openMenu() {
-        val intent = Intent(baseContext, TaskFragment::class.java)
+        val intent = Intent(baseContext, TaskListActivity::class.java)
         startActivity(intent)
     }
 }
