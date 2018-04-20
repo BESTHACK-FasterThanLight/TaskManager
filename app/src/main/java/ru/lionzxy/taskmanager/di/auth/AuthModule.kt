@@ -22,7 +22,7 @@ class AuthModule {
     @Provides
     @AuthScope
     fun provideRepository(sharedPreferences: SharedPreferences, retrofit: Retrofit, appDatabase: AppDatabase): IAuthRepository {
-        return AuthRepository(sharedPreferences, appDatabase, retrofit)
+        return AuthRepository(sharedPreferences, retrofit)
     }
 
 

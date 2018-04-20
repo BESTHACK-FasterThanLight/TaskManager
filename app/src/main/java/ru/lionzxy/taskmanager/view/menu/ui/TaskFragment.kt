@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_users.*
 import ru.lionzxy.taskmanager.R
 import ru.lionzxy.taskmanager.data.auth.UserApi
 import ru.lionzxy.taskmanager.utils.toast
-import ru.lionzxy.taskmanager.view.menu.presenter.UserMenuPresenter
+import ru.lionzxy.taskmanager.view.menu.presenter.TaskPresenter
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -16,20 +16,22 @@ import ru.lionzxy.taskmanager.view.menu.presenter.UserMenuPresenter
  * @date 27.03.18
  */
 
-class UserMenuActivity : MvpAppCompatActivity(), IUserMenuActivity {
+class TaskFragment : MvpAppCompatActivity(), ITaskActivity {
     @InjectPresenter
-    lateinit var presenter: UserMenuPresenter
+    lateinit var presenter: TaskPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_users)
+
+
 
         list.layoutManager = LinearLayoutManager(this)
         updateButton.setOnRefreshListener { presenter.loadList() }
     }
 
     override fun setList(users: List<UserApi>, login: String) {
-        list.adapter = UserModelAdapter(users, login)
+        list.adapter = TaskAdapter(users, login)
         updateButton.isRefreshing = false
     }
 

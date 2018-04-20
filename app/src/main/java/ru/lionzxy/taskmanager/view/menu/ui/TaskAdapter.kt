@@ -18,7 +18,7 @@ import ru.lionzxy.taskmanager.utils.generateRandomPassword
  * @date 27.03.18
  */
 
-class UserModelAdapter(private val users: List<UserApi>, private val login: String) : RecyclerView.Adapter<UserModelAdapter.ViewHolder>() {
+class TaskAdapter(private val users: List<UserApi>, private val login: String) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false))
     }

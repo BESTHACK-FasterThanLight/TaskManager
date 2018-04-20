@@ -1,9 +1,8 @@
 package ru.lionzxy.taskmanager.di.auth
 
-import android.support.v7.view.menu.MenuPresenter
 import dagger.Subcomponent
 import ru.lionzxy.taskmanager.view.auth.presenter.AuthPresenter
-import ru.lionzxy.taskmanager.view.menu.presenter.UserMenuPresenter
+import ru.lionzxy.taskmanager.view.menu.presenter.TaskPresenter
 import ru.lionzxy.taskmanager.view.register.presenter.RegisterPresenter
 
 /**
@@ -17,5 +16,5 @@ import ru.lionzxy.taskmanager.view.register.presenter.RegisterPresenter
 interface AuthComponent {
     fun inject(presenter: AuthPresenter)
     fun inject(presenter: RegisterPresenter)
-    fun inject(presenter: UserMenuPresenter)
+    fun inject(presenter: TaskPresenter)
 }

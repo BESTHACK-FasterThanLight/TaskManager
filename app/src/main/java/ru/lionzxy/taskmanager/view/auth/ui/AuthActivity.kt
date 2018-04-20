@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_auth.*
 import ru.lionzxy.taskmanager.R
 import ru.lionzxy.taskmanager.utils.toast
 import ru.lionzxy.taskmanager.view.auth.presenter.AuthPresenter
-import ru.lionzxy.taskmanager.view.menu.ui.UserMenuActivity
+import ru.lionzxy.taskmanager.view.menu.ui.TaskFragment
 import ru.lionzxy.taskmanager.view.register.ui.RegisterActivity
 
 /**
@@ -66,7 +66,7 @@ class AuthActivity : MvpAppCompatActivity(), IAuthView {
     }
 
     override fun openMenu() {
-        val intent = Intent(baseContext, UserMenuActivity::class.java)
+        val intent = Intent(baseContext, TaskFragment::class.java)
         startActivity(intent)
     }
 }

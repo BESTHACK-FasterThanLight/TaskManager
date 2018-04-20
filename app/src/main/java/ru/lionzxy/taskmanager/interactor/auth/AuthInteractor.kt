@@ -23,8 +23,4 @@ class AuthInteractor(private val authRepository: IAuthRepository) : IAuthInterac
     override fun register(login: String, password: String, secret: String): Single<UserModel> {
         return authRepository.register(login, password, secret)
     }
-
-    override fun get(): Single<List<UserApi>> {
-        return authRepository.get()
-    }
 }

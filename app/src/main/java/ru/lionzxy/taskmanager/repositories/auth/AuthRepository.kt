@@ -16,9 +16,7 @@ import ru.lionzxy.taskmanager.data.db.AppDatabase
  */
 
 class AuthRepository(private val sharedPreferences: SharedPreferences,
-                     appDatabase: AppDatabase,
                      retrofit: Retrofit) : IAuthRepository {
-    val userDao = appDatabase.getUserDao()
     val api = retrofit.create(TryToHackApi::class.java)
 
     override fun getToken(): String? {
@@ -46,14 +44,6 @@ class AuthRepository(private val sharedPreferences: SharedPreferences,
                 .subscribeOn(Schedulers.io())
                 .doAfterSuccess {
                     putToken(login)
-                }
-    }
-
-    override fun get(): Single<List<UserApi>> {
-        return api.get()
-                .subscribeOn(Schedulers.io())
-                .doAfterSuccess {
-                    userDao.insertAll(it)
                 }
     }
 }

@@ -15,5 +15,4 @@ interface IAuthInteractor {
 
     fun login(login: String, password: String): Single<UserModel>
     fun register(login: String, password: String, secret: String): Single<UserModel>
-    fun get(): Single<List<UserApi>>
 }

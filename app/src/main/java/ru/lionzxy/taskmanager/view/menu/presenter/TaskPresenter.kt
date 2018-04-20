@@ -7,7 +7,7 @@ import io.reactivex.disposables.CompositeDisposable
 import ru.lionzxy.taskmanager.App
 import ru.lionzxy.taskmanager.di.auth.AuthModule
 import ru.lionzxy.taskmanager.interactor.auth.IAuthInteractor
-import ru.lionzxy.taskmanager.view.menu.ui.IUserMenuActivity
+import ru.lionzxy.taskmanager.view.menu.ui.ITaskActivity
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ import javax.inject.Inject
  */
 
 @InjectViewState
-class UserMenuPresenter : MvpPresenter<IUserMenuActivity>() {
+class TaskPresenter : MvpPresenter<ITaskActivity>() {
     @Inject
     lateinit var authInteractor: IAuthInteractor
     private val disposable = CompositeDisposable()
@@ -33,14 +33,7 @@ class UserMenuPresenter : MvpPresenter<IUserMenuActivity>() {
     }
 
     fun loadList() {
-        disposable.addAll(authInteractor.get()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    viewState.setList(it, authInteractor.getToken() ?: "")
-                }, {
-                    Timber.e(it)
-                    viewState.onError()
-                }))
+
     }
 
     override fun onDestroy() {

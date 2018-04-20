@@ -9,7 +9,7 @@ import ru.lionzxy.taskmanager.data.auth.UserApi
  * @date 27.03.18
  */
 
-interface IUserMenuActivity : MvpView {
+interface ITaskActivity : MvpView {
     fun setList(users: List<UserApi>, login: String)
     fun onError()
 }
