@@ -1,5 +1,6 @@
 package ru.lionzxy.taskmanager.view.tasks.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import kotlinx.android.synthetic.main.fragmeny_menu.*
 import ru.lionzxy.taskmanager.R
 import ru.lionzxy.taskmanager.data.model.Task
 import ru.lionzxy.taskmanager.utils.toast
+import ru.lionzxy.taskmanager.view.task.ui.TaskActivity
 import ru.lionzxy.taskmanager.view.tasks.presenter.TasksPresenter
 
 /**
@@ -67,7 +69,7 @@ class TasksFragment : MvpAppCompatFragment(), TasksView {
 
     override fun showProgress(visible: Boolean) {
         tabHost.visibility = if (visible) View.GONE else View.VISIBLE
-        progress.visibility = if(visible) View.VISIBLE else View.GONE
+        progress.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     override fun setList(tasks: List<Task>) {
@@ -82,9 +84,15 @@ class TasksFragment : MvpAppCompatFragment(), TasksView {
                 else -> todoList.add(it)
             }
         }
-        rvTodo.adapter = TaskAdapter(todoList)
-        rvProgress.adapter = TaskAdapter(progrssList)
-        rvReady.adapter = TaskAdapter(readyList)
+        rvTodo.adapter = TaskAdapter(todoList) { openTask(it) }
+        rvProgress.adapter = TaskAdapter(progrssList) { openTask(it) }
+        rvReady.adapter = TaskAdapter(readyList) { openTask(it) }
+    }
+
+    private fun openTask(id: Int) {
+        val intent = Intent(context, TaskActivity::class.java)
+        intent.putExtra("id", id)
+        startActivity(intent)
     }
 
 }

@@ -11,7 +11,7 @@ import ru.lionzxy.taskmanager.data.model.Project
  * @date 27.03.18
  */
 
-interface ITaskActivity : MvpView {
+interface IMainActivity : MvpView {
     fun setProjects(projects: List<Project>)
     fun onProjectCreated()
     fun onError()

@@ -1,5 +1,8 @@
 package ru.lionzxy.taskmanager.repositories.comments
 
+import io.reactivex.Single
+import ru.lionzxy.taskmanager.data.model.Comment
+
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
  * @project TryToHack
@@ -7,5 +10,5 @@ package ru.lionzxy.taskmanager.repositories.comments
  */
 
 interface ICommentRepository {
-
+    fun getComments(id: Int): Single<List<Comment>>
 }

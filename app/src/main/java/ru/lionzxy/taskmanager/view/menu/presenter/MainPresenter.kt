@@ -8,7 +8,7 @@ import ru.lionzxy.taskmanager.App
 import ru.lionzxy.taskmanager.data.model.Project
 import ru.lionzxy.taskmanager.di.tasks.TaskModule
 import ru.lionzxy.taskmanager.interactor.tasks.ITaskInteractor
-import ru.lionzxy.taskmanager.view.menu.ui.ITaskActivity
+import ru.lionzxy.taskmanager.view.menu.ui.IMainActivity
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -19,7 +19,7 @@ import javax.inject.Inject
  */
 
 @InjectViewState
-class TaskPresenter : MvpPresenter<ITaskActivity>() {
+class MainPresenter : MvpPresenter<IMainActivity>() {
     @Inject
     lateinit var interactor: ITaskInteractor
     private val disposable = CompositeDisposable()

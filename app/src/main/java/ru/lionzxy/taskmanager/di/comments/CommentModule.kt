@@ -6,6 +6,8 @@ import ru.lionzxy.taskmanager.interactor.comments.CommentInteractor
 import ru.lionzxy.taskmanager.interactor.comments.ICommentInteractor
 import ru.lionzxy.taskmanager.repositories.comments.CommentRepository
 import ru.lionzxy.taskmanager.repositories.comments.ICommentRepository
+import ru.lionzxy.taskmanager.repositories.tasks.ITaskRepository
+import ru.lionzxy.taskmanager.repositories.tasks.TaskRepository
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -25,7 +27,13 @@ class CommentModule {
 
     @Provides
     @CommentScope
-    fun provideInteractor(repository: ICommentRepository): ICommentInteractor {
-        return CommentInteractor(repository)
+    fun provideTaskRepository(): ITaskRepository {
+        return TaskRepository()
+    }
+
+    @Provides
+    @CommentScope
+    fun provideInteractor(repository: ICommentRepository, taskRepository: ITaskRepository): ICommentInteractor {
+        return CommentInteractor(repository, taskRepository)
     }
 }

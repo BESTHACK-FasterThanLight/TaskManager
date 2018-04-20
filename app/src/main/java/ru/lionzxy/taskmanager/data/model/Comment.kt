@@ -5,3 +5,6 @@ package ru.lionzxy.taskmanager.data.model
  * @project TryToHack
  * @date 20.04.18
  */
+
+data class Comment(var text: String,
+                   var author: String)

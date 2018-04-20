@@ -21,7 +21,7 @@ import ru.lionzxy.taskmanager.repositories.auth.IAuthRepository
 class AuthModule {
     @Provides
     @AuthScope
-    fun provideRepository(sharedPreferences: SharedPreferences, retrofit: Retrofit, appDatabase: AppDatabase): IAuthRepository {
+    fun provideRepository(sharedPreferences: SharedPreferences, retrofit: Retrofit): IAuthRepository {
         return AuthRepository(sharedPreferences, retrofit)
     }
 

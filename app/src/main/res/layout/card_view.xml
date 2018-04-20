@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_margin="16dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardBackgroundColor="@android:color/white"
         card_view:cardCornerRadius="1dp"
-        card_view:contentPadding="10dp"
         card_view:cardElevation="10dp"
-        card_view:cardBackgroundColor="@android:color/white">
+        card_view:contentPadding="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -22,22 +24,20 @@
 
             <TextView
                 android:id="@+id/taskName"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="30dp"
+                android:layout_weight="1"
                 android:text="Task"
-                />
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/taskText"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="20dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:text="Anyone who reads Old and Middle English literary texts will be familiar with the mid-brown volumes of the EETS, with the symbol of Alfred's jewel embossed on the front cover. Most of the works attributed to King Alfred or to Aelfric,"
-                />
+                android:textSize="20dp" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

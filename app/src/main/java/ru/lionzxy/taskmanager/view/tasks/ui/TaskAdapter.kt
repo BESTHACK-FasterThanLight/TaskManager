@@ -14,7 +14,7 @@ import ru.lionzxy.taskmanager.data.model.Task
  * @date 27.03.18
  */
 
-class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskAdapter(private val tasks: List<Task>, private val listener: ((id: Int) -> Unit)) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.card_view, parent, false))
     }
@@ -26,6 +26,7 @@ class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdap
 
         holder.title.text = task.name
         holder.description.text = task.name
+        holder.itemView.setOnClickListener { listener.invoke(task.id) }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

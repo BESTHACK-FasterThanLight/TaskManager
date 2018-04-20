@@ -2,7 +2,6 @@ package ru.lionzxy.taskmanager.di.auth
 
 import dagger.Subcomponent
 import ru.lionzxy.taskmanager.view.auth.presenter.AuthPresenter
-import ru.lionzxy.taskmanager.view.menu.presenter.TaskPresenter
 import ru.lionzxy.taskmanager.view.register.presenter.RegisterPresenter
 
 /**

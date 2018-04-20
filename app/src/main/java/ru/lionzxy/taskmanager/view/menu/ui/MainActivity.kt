@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 import ru.lionzxy.taskmanager.R
 import ru.lionzxy.taskmanager.data.model.Project
 import ru.lionzxy.taskmanager.utils.toast
-import ru.lionzxy.taskmanager.view.menu.presenter.TaskPresenter
+import ru.lionzxy.taskmanager.view.menu.presenter.MainPresenter
 import ru.lionzxy.taskmanager.view.tasks.ui.TasksFragment
 
 /**
@@ -20,9 +20,9 @@ import ru.lionzxy.taskmanager.view.tasks.ui.TasksFragment
  * @date 27.03.18
  */
 
-class TaskListActivity : MvpAppCompatActivity(), ITaskActivity {
+class MainActivity : MvpAppCompatActivity(), IMainActivity {
     @InjectPresenter
-    lateinit var presenter: TaskPresenter
+    lateinit var presenter: MainPresenter
     var drawer: Drawer? = null
     var project: TasksFragment? = null
 
