@@ -46,11 +46,11 @@ class TaskListActivity : MvpAppCompatActivity(), ITaskActivity {
                 .withOnDrawerItemClickListener { view, position, item ->
                     if (item.identifier == 200L) {
                         createProject()
-                        return@withOnDrawerItemClickListener true
+                        return@withOnDrawerItemClickListener false
                     }
 
-                    openTask(item.identifier.toInt())
-                    return@withOnDrawerItemClickListener true
+                    presenter.openTasks(item.identifier.toInt())
+                    return@withOnDrawerItemClickListener false
                 }
                 .build()
 
@@ -64,7 +64,7 @@ class TaskListActivity : MvpAppCompatActivity(), ITaskActivity {
 
     }
 
-    private fun openTask(id: Int) {
+    override fun openTask(id: Int) {
         val args = Bundle()
         args.putInt("id", id)
         val tmp = TasksFragment()
