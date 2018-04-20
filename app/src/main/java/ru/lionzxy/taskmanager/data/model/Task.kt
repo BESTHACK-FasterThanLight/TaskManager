@@ -7,4 +7,5 @@ package ru.lionzxy.taskmanager.data.model
  */
 
 data class Task(var name: String,
-                var description: String)
+                var description: String,
+                var status: Int)

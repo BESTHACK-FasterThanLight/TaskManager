@@ -13,8 +13,8 @@ import ru.lionzxy.taskmanager.repositories.tasks.ITaskRepository
  */
 
 class TaskInteractor(private val repository: ITaskRepository) : ITaskInteractor {
-    override fun getTasks(): Single<List<Task>> {
-        return repository.getTasks()
+    override fun getTasks(id: Int): Single<List<Task>> {
+        return repository.getTasks(id)
     }
 
     override fun getProjects(): Single<List<Project>> {

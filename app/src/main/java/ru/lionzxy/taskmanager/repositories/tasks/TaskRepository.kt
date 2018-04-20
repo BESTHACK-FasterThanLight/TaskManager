@@ -16,8 +16,8 @@ class TaskRepository : ITaskRepository {
         return Single.just(listOf(Project("test", 1)))
     }
 
-    override fun getTasks(): Single<List<Task>> {
-        return Single.just(listOf(Task("task", "Test task")))
+    override fun getTasks(id: Int): Single<List<Task>> {
+        return Single.just(listOf(Task("task", "Test task", 0)))
     }
 
     override fun createProject(project: Project): Completable {

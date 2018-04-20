@@ -13,7 +13,7 @@ import ru.lionzxy.taskmanager.data.model.Task
 
 interface ITaskRepository {
     fun getProjects(): Single<List<Project>>
-    fun getTasks(): Single<List<Task>>
+    fun getTasks(id: Int): Single<List<Task>>
     fun createProject(project: Project): Completable
     fun createTask(task: Task): Completable
 }

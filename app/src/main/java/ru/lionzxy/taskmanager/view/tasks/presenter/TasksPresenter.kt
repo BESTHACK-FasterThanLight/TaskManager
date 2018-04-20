@@ -1,25 +1,24 @@
-package ru.lionzxy.taskmanager.view.menu.presenter
+package ru.lionzxy.taskmanager.view.tasks.presenter
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import ru.lionzxy.taskmanager.App
-import ru.lionzxy.taskmanager.data.model.Project
 import ru.lionzxy.taskmanager.di.tasks.TaskModule
 import ru.lionzxy.taskmanager.interactor.tasks.ITaskInteractor
-import ru.lionzxy.taskmanager.view.menu.ui.ITaskActivity
+import ru.lionzxy.taskmanager.view.tasks.ui.TasksView
 import timber.log.Timber
 import javax.inject.Inject
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
  * @project TryToHack
- * @date 27.03.18
+ * @date 20.04.18
  */
 
 @InjectViewState
-class TaskPresenter : MvpPresenter<ITaskActivity>() {
+class TasksPresenter : MvpPresenter<TasksView>() {
     @Inject
     lateinit var interactor: ITaskInteractor
     private val disposable = CompositeDisposable()
@@ -30,44 +29,23 @@ class TaskPresenter : MvpPresenter<ITaskActivity>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        loadList()
+        viewState.notifyPresenterAboutAction()
     }
 
-    fun loadList() {
-        disposable.addAll(interactor.getProjects()
+    fun loadList(id: Int) {
+        viewState.showProgress(true)
+        disposable.addAll(interactor.getTasks(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    viewState.openTask(it.first().id)
-                    viewState.setProjects(it)
+                    viewState.setList(it)
+                    viewState.showProgress(false)
                 }, {
                     Timber.e(it)
+                    viewState.showProgress(false)
                     viewState.onError()
                 }))
-
-        /*
-        disposable.addAll(interactor.getTasks()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    viewState.setTasks(it)
-                }, {
-                    Timber.e(it)
-                    viewState.onError()
-                }))*/
     }
 
-    fun openTasks(id: Int) {
-        viewState.openTask(id)
-    }
-
-    fun createProject(name: String) {
-        disposable.addAll(interactor.createProject(Project(name, 0)).subscribe({
-            viewState.onProjectCreated()
-        }, {
-            Timber.e(it)
-            viewState.onError()
-        })
-        )
-    }
 
     override fun onDestroy() {
         super.onDestroy()
