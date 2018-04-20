@@ -1,5 +1,10 @@
 package ru.lionzxy.taskmanager.repositories.tasks
 
+import io.reactivex.Completable
+import io.reactivex.Single
+import ru.lionzxy.taskmanager.data.model.Project
+import ru.lionzxy.taskmanager.data.model.Task
+
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
  * @project TryToHack
@@ -7,5 +12,8 @@ package ru.lionzxy.taskmanager.repositories.tasks
  */
 
 interface ITaskRepository {
-
+    fun getProjects(): Single<List<Project>>
+    fun getTasks(): Single<List<Task>>
+    fun createProject(project: Project): Completable
+    fun createTask(task: Task): Completable
 }

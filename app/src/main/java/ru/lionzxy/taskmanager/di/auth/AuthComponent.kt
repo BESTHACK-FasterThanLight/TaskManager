@@ -16,5 +16,4 @@ import ru.lionzxy.taskmanager.view.register.presenter.RegisterPresenter
 interface AuthComponent {
     fun inject(presenter: AuthPresenter)
     fun inject(presenter: RegisterPresenter)
-    fun inject(presenter: TaskPresenter)
 }

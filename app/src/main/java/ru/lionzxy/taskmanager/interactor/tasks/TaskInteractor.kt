@@ -1,5 +1,9 @@
 package ru.lionzxy.taskmanager.interactor.tasks
 
+import io.reactivex.Completable
+import io.reactivex.Single
+import ru.lionzxy.taskmanager.data.model.Project
+import ru.lionzxy.taskmanager.data.model.Task
 import ru.lionzxy.taskmanager.repositories.tasks.ITaskRepository
 
 /**
@@ -8,6 +12,20 @@ import ru.lionzxy.taskmanager.repositories.tasks.ITaskRepository
  * @date 20.04.18
  */
 
-class TaskInteractor(repository: ITaskRepository) : ITaskInteractor {
+class TaskInteractor(private val repository: ITaskRepository) : ITaskInteractor {
+    override fun getTasks(): Single<List<Task>> {
+        return repository.getTasks()
+    }
 
+    override fun getProjects(): Single<List<Project>> {
+        return repository.getProjects()
+    }
+
+    override fun createProject(project: Project): Completable {
+        return repository.createProject(project)
+    }
+
+    override fun createTask(task: Task): Completable {
+        return repository.createTask(task)
+    }
 }

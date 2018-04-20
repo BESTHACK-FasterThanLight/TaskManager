@@ -1,6 +1,6 @@
 package ru.lionzxy.taskmanager.view.task.ui
 
-import com.arellomobile.mvp.MvpView
+import com.arellomobile.mvp.MvpAppCompatActivity
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -8,6 +8,6 @@ import com.arellomobile.mvp.MvpView
  * @date 20.04.18
  */
 
-interface TaskView: MvpView {
+class TaskActivity : MvpAppCompatActivity(), TaskView {
 
 }
