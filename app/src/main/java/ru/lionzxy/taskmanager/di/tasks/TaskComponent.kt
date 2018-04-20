@@ -16,5 +16,4 @@ import ru.lionzxy.taskmanager.view.tasks.presenter.TasksPresenter
 interface TaskComponent {
     fun inject(presenter: MainPresenter)
     fun inject(presenter: TasksPresenter)
-    fun inject(presenter: TaskPresenter)
 }
