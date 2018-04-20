@@ -1,5 +1,6 @@
 package ru.lionzxy.taskmanager.view.task.ui
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -9,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_task.*
 import ru.lionzxy.taskmanager.R
 import ru.lionzxy.taskmanager.data.model.Comment
 import ru.lionzxy.taskmanager.data.model.Task
+import ru.lionzxy.taskmanager.utils.getColorOld
 import ru.lionzxy.taskmanager.utils.toast
 import ru.lionzxy.taskmanager.view.task.presenter.TaskPresenter
 
@@ -27,11 +29,19 @@ class TaskActivity : MvpAppCompatActivity(), TaskView {
         setContentView(R.layout.activity_task)
 
         comments.layoutManager = LinearLayoutManager(this)
+        send.setOnClickListener { presenter.sendMessage(inputEditText.text.toString(), intent.getIntExtra("id", 0)) }
+        status_todo.setOnClickListener { presenter.setStatus(TaskStatus.TODO, getId()) }
+        status_progress.setOnClickListener { presenter.setStatus(TaskStatus.PROGRESS, getId()) }
+        status_ready.setOnClickListener { presenter.setStatus(TaskStatus.READY, getId()) }
+
     }
 
     override fun setTask(task: Task, commentList: List<Comment>) {
         titleText.text = task.name
         description.text = task.description
+        val stat = TaskStatus.values().first { it.id == task.status }
+        status.background = ColorDrawable(getColorOld(stat.colorRes))
+        status.text = stat.textRes
 
         comments.adapter = CommentAdapter(commentList, {})
     }
@@ -42,8 +52,16 @@ class TaskActivity : MvpAppCompatActivity(), TaskView {
         inputField.visibility = if (visible) View.GONE else View.VISIBLE
     }
 
+    fun getId(): Int {
+        return intent.getIntExtra("id", 0)
+    }
+
     override fun onError() {
         toast("Update error")
+    }
+
+    override fun clearInput() {
+        inputEditText.text.clear()
     }
 
     override fun notifyPresenterAboutAction() {

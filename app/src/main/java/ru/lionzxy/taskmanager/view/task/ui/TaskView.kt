@@ -20,6 +20,8 @@ interface TaskView : MvpView {
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun setTask(task: Task, commentList: List<Comment>)
 
+    fun clearInput()
+
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun showProgress(visible: Boolean)
 

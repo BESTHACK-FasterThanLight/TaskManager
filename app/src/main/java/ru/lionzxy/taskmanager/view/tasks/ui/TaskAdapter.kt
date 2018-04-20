@@ -1,5 +1,6 @@
 package ru.lionzxy.taskmanager.view.tasks.ui
 
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -26,11 +27,12 @@ class TaskAdapter(private val tasks: List<Task>, private val listener: ((id: Int
 
         holder.title.text = task.name
         holder.description.text = task.name
-        holder.itemView.setOnClickListener { listener.invoke(task.id) }
+        holder.card.setOnClickListener { listener.invoke(task.id) }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title = itemView.findViewById<TextView>(R.id.taskName)!!
         val description = itemView.findViewById<TextView>(R.id.taskText)!!
+        val card = itemView.findViewById<CardView>(R.id.card_view)!!
     }
 }

@@ -7,6 +7,7 @@ import io.reactivex.disposables.CompositeDisposable
 import ru.lionzxy.taskmanager.App
 import ru.lionzxy.taskmanager.di.comments.CommentModule
 import ru.lionzxy.taskmanager.interactor.comments.ICommentInteractor
+import ru.lionzxy.taskmanager.view.task.ui.TaskStatus
 import ru.lionzxy.taskmanager.view.task.ui.TaskView
 import timber.log.Timber
 import javax.inject.Inject
@@ -42,6 +43,35 @@ class TaskPresenter : MvpPresenter<TaskView>() {
             viewState.onError()
             viewState.showProgress(false)
         }))
+    }
+
+    fun setStatus(status: TaskStatus, id: Int) {
+        viewState.showProgress(true)
+        disposable.addAll(interactor.setStatus(status, id).subscribe({
+            viewState.setTask(it.first, it.second)
+            viewState.showProgress(false)
+        }, {
+            Timber.e(it)
+            viewState.onError()
+            viewState.showProgress(false)
+        }))
+    }
+
+    fun sendMessage(text: String, id: Int) {
+        viewState.showProgress(true)
+        disposable.addAll(interactor.sendMessage(text, id)
+                .toSingleDefault("")
+                .flatMap { interactor.getFullTask(id) }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    viewState.setTask(it.first, it.second)
+                    viewState.clearInput()
+                    viewState.showProgress(false)
+                }, {
+                    Timber.e(it)
+                    viewState.onError()
+                    viewState.showProgress(false)
+                }))
     }
 
     override fun onDestroy() {

@@ -1,7 +1,10 @@
 package ru.lionzxy.taskmanager.repositories.comments
 
+import io.reactivex.Completable
 import io.reactivex.Single
 import ru.lionzxy.taskmanager.data.model.Comment
+import ru.lionzxy.taskmanager.data.model.Task
+import ru.lionzxy.taskmanager.view.task.ui.TaskStatus
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -14,4 +17,12 @@ class CommentRepository : ICommentRepository {
         return Single.just(listOf(Comment("Text", "Author")))
     }
 
+    override fun sendMessage(text: String, id: Int): Completable {
+        return Completable.complete()
+    }
+
+    override fun setStatus(status: TaskStatus, task: Task): Single<Task> {
+        task.status = status.id
+        return Single.just(task)
+    }
 }
