@@ -1,6 +1,7 @@
 package ru.lionzxy.taskmanager.di.tasks
 
 import dagger.Subcomponent
+import ru.lionzxy.taskmanager.view.add_task.ui.AddTaskActivity
 import ru.lionzxy.taskmanager.view.menu.presenter.MainPresenter
 import ru.lionzxy.taskmanager.view.task.presenter.TaskPresenter
 import ru.lionzxy.taskmanager.view.tasks.presenter.TasksPresenter
@@ -16,4 +17,5 @@ import ru.lionzxy.taskmanager.view.tasks.presenter.TasksPresenter
 interface TaskComponent {
     fun inject(presenter: MainPresenter)
     fun inject(presenter: TasksPresenter)
+    fun inject(activity: AddTaskActivity)
 }
