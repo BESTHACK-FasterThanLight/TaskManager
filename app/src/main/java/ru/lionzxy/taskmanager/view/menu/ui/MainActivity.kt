@@ -1,6 +1,8 @@
 package ru.lionzxy.taskmanager.view.menu.ui
 
 import android.os.Bundle
+import android.text.InputType
+import com.afollestad.materialdialogs.MaterialDialog
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.mikepenz.materialdrawer.Drawer
@@ -61,6 +63,13 @@ class MainActivity : MvpAppCompatActivity(), IMainActivity {
     }
 
     private fun createProject() {
+        MaterialDialog.Builder(this)
+                .title("Типо title")
+                .content("Типо content")
+                .inputType(InputType.TYPE_CLASS_TEXT)
+                .input("Название таски", "", { dialog, input ->
+                    // Your code
+                }).show()
 
     }
 
