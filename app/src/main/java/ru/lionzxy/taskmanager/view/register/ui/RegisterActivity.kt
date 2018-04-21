@@ -29,7 +29,7 @@ class RegisterActivity : MvpAppCompatActivity(), IRegisterView {
         buttonLogin.setOnClickListener {
             authPresenter.onClickLogin(editTextLogin.text.toString(),
                     editTextPassword.text.toString(),
-                    editTextSecret.text.toString())
+                    editTextEmail.text.toString())
         }
 
         auth_login_button.setOnClickListener {

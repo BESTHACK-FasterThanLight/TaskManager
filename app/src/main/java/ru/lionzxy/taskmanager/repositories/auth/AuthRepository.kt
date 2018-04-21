@@ -5,9 +5,7 @@ import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import ru.lionzxy.taskmanager.data.auth.TryToHackApi
-import ru.lionzxy.taskmanager.data.auth.UserApi
 import ru.lionzxy.taskmanager.data.auth.UserModel
-import ru.lionzxy.taskmanager.data.db.AppDatabase
 
 /**
  * @author Nikita Kulikov <nikita@kulikof.ru>
@@ -40,7 +38,7 @@ class AuthRepository(private val sharedPreferences: SharedPreferences,
     }
 
     override fun register(login: String, password: String, secret: String): Single<UserModel> {
-        return api.register(login, password, secret).toSingle { UserModel(login, "") }
+        return api.register(login, password, secret).toSingle { UserModel(login, secret) }
                 .subscribeOn(Schedulers.io())
                 .doAfterSuccess {
                     putToken(login)

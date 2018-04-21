@@ -37,12 +37,12 @@ class RegisterPresenter : MvpPresenter<IRegisterView>() {
         }
     }
 
-    fun onClickLogin(login: String, password: String, secret: String) {
+    fun onClickLogin(login: String, password: String, email: String) {
         if (!validatePasswordAndLogin(login, password)) {
             return
         }
         viewState.onLoading(true)
-        disposable.addAll(authInteractor.register(login, password, secret)
+        disposable.addAll(authInteractor.register(login, password, email)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     viewState.onLoading(false)

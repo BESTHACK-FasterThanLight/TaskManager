@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragmeny_menu.*
 import ru.lionzxy.taskmanager.R
 import ru.lionzxy.taskmanager.data.model.Task
 import ru.lionzxy.taskmanager.utils.toast
+import ru.lionzxy.taskmanager.view.add_task.ui.AddTaskActivity
 import ru.lionzxy.taskmanager.view.task.ui.TaskActivity
 import ru.lionzxy.taskmanager.view.tasks.presenter.TasksPresenter
 
@@ -51,6 +52,11 @@ class TasksFragment : MvpAppCompatFragment(), TasksView {
         rvProgress.layoutManager = LinearLayoutManager(context)
         rvTodo.layoutManager = LinearLayoutManager(context)
         rvReady.layoutManager = LinearLayoutManager(context)
+
+        fab.setOnClickListener {
+            val intent = Intent(context, AddTaskActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {
