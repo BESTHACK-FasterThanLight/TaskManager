@@ -64,10 +64,10 @@ class MainActivity : MvpAppCompatActivity(), IMainActivity {
 
     private fun createProject() {
         MaterialDialog.Builder(this)
-                .title("Типо title")
-                .content("Типо content")
+                .title("Новый проект")
+                .content("Введите название проекта")
                 .inputType(InputType.TYPE_CLASS_TEXT)
-                .input("Название таски", "", { dialog, input ->
+                .input("Название", "", { dialog, input ->
                     // Your code
                 }).show()
 
