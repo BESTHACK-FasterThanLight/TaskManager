@@ -74,6 +74,10 @@ class TaskPresenter : MvpPresenter<TaskView>() {
                 }))
     }
 
+    fun onRemoveComment(id: Int) {
+        interactor.removeSecretCommit(id).subscribe { Timber.i("Ok") }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         disposable.clear()

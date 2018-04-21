@@ -14,7 +14,8 @@ import ru.lionzxy.taskmanager.view.task.ui.TaskStatus
 
 class CommentRepository : ICommentRepository {
     override fun getComments(id: Int): Single<List<Comment>> {
-        return Single.just(listOf(Comment("Text", "Author")))
+        return Single.just(listOf(Comment("Text", "Author", false, 1),
+                Comment("Text", "Author", true, 2)))
     }
 
     override fun sendMessage(text: String, id: Int): Completable {
@@ -24,5 +25,9 @@ class CommentRepository : ICommentRepository {
     override fun setStatus(status: TaskStatus, task: Task): Single<Task> {
         task.status = status.id
         return Single.just(task)
+    }
+
+    override fun removeSecretCommit(id: Int): Completable {
+        return Completable.complete()
     }
 }

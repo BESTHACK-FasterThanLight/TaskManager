@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
-import ru.lionzxy.taskmanager.data.auth.TryToHackApi
+import ru.lionzxy.taskmanager.data.auth.ServerApi
 import ru.lionzxy.taskmanager.data.auth.UserModel
 
 /**
@@ -15,7 +15,7 @@ import ru.lionzxy.taskmanager.data.auth.UserModel
 
 class AuthRepository(private val sharedPreferences: SharedPreferences,
                      retrofit: Retrofit) : IAuthRepository {
-    val api = retrofit.create(TryToHackApi::class.java)
+    val api = retrofit.create(ServerApi::class.java)
 
     override fun getToken(): String? {
         val token = sharedPreferences.getString("auth_token", "")

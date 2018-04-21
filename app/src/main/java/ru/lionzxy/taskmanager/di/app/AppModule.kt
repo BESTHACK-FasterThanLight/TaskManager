@@ -3,7 +3,7 @@ package ru.lionzxy.taskmanager.di.app
 import android.arch.persistence.room.Room
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
+import com.securepreferences.SecurePreferences
 import dagger.Module
 import dagger.Provides
 import okhttp3.CertificatePinner
@@ -29,7 +29,7 @@ class AppModule(val context: Context) {
 
     @Singleton
     @Provides
-    fun provideSharedPreference(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    fun provideSharedPreference(context: Context): SharedPreferences = SecurePreferences(context)
 
     @Singleton
     @Provides

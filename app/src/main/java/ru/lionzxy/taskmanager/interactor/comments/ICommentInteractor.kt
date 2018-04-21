@@ -16,4 +16,6 @@ interface ICommentInteractor {
     fun getFullTask(id: Int): Single<Pair<Task, List<Comment>>>
     fun sendMessage(text: String, id: Int): Completable
     fun setStatus(status: TaskStatus, id: Int): Single<Pair<Task, List<Comment>>>
+
+    fun removeSecretCommit(id: Int): Completable
 }

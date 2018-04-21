@@ -11,7 +11,7 @@ import retrofit2.http.Query
  * @date 27.03.18
  */
 
-interface TryToHackApi {
+interface ServerApi {
     @GET("login.php")
     fun login(@Query("login")
               login: String,

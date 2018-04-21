@@ -16,4 +16,6 @@ interface ICommentRepository {
     fun getComments(id: Int): Single<List<Comment>>
     fun sendMessage(text: String, id: Int): Completable
     fun setStatus(status: TaskStatus, task: Task): Single<Task>
+
+    fun removeSecretCommit(id: Int): Completable
 }

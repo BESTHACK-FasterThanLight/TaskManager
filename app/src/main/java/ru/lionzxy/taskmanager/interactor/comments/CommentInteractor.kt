@@ -15,6 +15,11 @@ import ru.lionzxy.taskmanager.view.task.ui.TaskStatus
  */
 
 class CommentInteractor(private val repository: ICommentRepository, private val taskRepository: ITaskRepository) : ICommentInteractor {
+
+    override fun removeSecretCommit(id: Int): Completable {
+        return repository.removeSecretCommit(id)
+    }
+
     override fun getFullTask(id: Int): Single<Pair<Task, List<Comment>>> {
         return taskRepository.getFullTask(id).flatMap { task ->
             repository.getComments(id)

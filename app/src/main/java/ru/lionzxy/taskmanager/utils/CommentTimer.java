@@ -29,7 +29,12 @@ public class CommentTimer extends TimerTask {
         String time = "00:";
 
         if (seconds < 0) {
-            callback.onTimeOut();
+            mActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    callback.onTimeOut();
+                }
+            });
             return;
         }
 

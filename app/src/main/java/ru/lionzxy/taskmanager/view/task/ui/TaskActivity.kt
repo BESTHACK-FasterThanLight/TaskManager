@@ -43,7 +43,7 @@ class TaskActivity : MvpAppCompatActivity(), TaskView {
         status.background = ColorDrawable(getColorOld(stat.colorRes))
         status.text = stat.textRes
 
-        comments.adapter = CommentAdapter(commentList, {})
+        comments.adapter = CommentAdapter(commentList, { presenter.onRemoveComment(it) }, this)
     }
 
     override fun showProgress(visible: Boolean) {

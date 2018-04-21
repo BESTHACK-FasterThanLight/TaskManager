@@ -7,4 +7,6 @@ package ru.lionzxy.taskmanager.data.model
  */
 
 data class Comment(var text: String,
-                   var author: String)
+                   var author: String,
+                   var secret: Boolean,
+                   var id: Int)
