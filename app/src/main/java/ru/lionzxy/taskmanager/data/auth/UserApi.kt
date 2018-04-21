@@ -13,10 +13,12 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "users")
 data class UserApi(
-        @SerializedName("secret")
-        var secret: String?,
+        @SerializedName("email")
+        var email: String? = null,
         @PrimaryKey
-        @SerializedName("login")
-        var login: String) {
+        @SerializedName("username")
+        var username: String? = null,
+        @SerializedName("password")
+        var password: String? = null) {
     constructor() : this(null, "")
 }

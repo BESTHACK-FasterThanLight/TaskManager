@@ -2,7 +2,9 @@ package ru.lionzxy.taskmanager.data.auth
 
 import io.reactivex.Completable
 import io.reactivex.Single
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 /**
@@ -12,18 +14,10 @@ import retrofit2.http.Query
  */
 
 interface ServerApi {
-    @GET("login.php")
-    fun login(@Query("login")
-              login: String,
-              @Query("password")
-              password: String): Completable
-    @GET("register.php")
-    fun register(@Query("login")
-                 login: String,
-                 @Query("password")
-                 password: String,
-                 @Query("secret")
-                 secret: String): Completable
+    @POST("login")
+    fun login(@Body userApi: UserApi): Completable
+    @GET("signup")
+    fun register(@Body userApi: UserApi): Completable
 
     @GET("get.php")
     fun get(): Single<List<UserApi>>

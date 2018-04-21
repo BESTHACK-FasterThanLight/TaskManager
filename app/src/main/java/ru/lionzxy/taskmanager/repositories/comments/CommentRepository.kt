@@ -2,6 +2,7 @@ package ru.lionzxy.taskmanager.repositories.comments
 
 import io.reactivex.Completable
 import io.reactivex.Single
+import ru.lionzxy.taskmanager.data.auth.ServerApi
 import ru.lionzxy.taskmanager.data.model.Comment
 import ru.lionzxy.taskmanager.data.model.Task
 import ru.lionzxy.taskmanager.view.task.ui.TaskStatus
@@ -12,7 +13,7 @@ import ru.lionzxy.taskmanager.view.task.ui.TaskStatus
  * @date 20.04.18
  */
 
-class CommentRepository : ICommentRepository {
+class CommentRepository(private val api: ServerApi) : ICommentRepository {
     override fun getComments(id: Int): Single<List<Comment>> {
         return Single.just(listOf(Comment("Text", "Author", false, 1),
                 Comment("Text", "Author", true, 2)))

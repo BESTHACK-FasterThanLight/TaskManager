@@ -2,6 +2,7 @@ package ru.lionzxy.taskmanager.di.tasks
 
 import dagger.Module
 import dagger.Provides
+import ru.lionzxy.taskmanager.data.auth.ServerApi
 import ru.lionzxy.taskmanager.interactor.tasks.ITaskInteractor
 import ru.lionzxy.taskmanager.interactor.tasks.TaskInteractor
 import ru.lionzxy.taskmanager.repositories.tasks.ITaskRepository
@@ -25,7 +26,7 @@ class TaskModule {
 
     @Provides
     @TaskScope
-    fun provideRepository(): ITaskRepository {
-        return TaskRepository()
+    fun provideRepository(api: ServerApi): ITaskRepository {
+        return TaskRepository(api)
     }
 }

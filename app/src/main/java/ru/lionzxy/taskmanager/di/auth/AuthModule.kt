@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import ru.lionzxy.taskmanager.data.auth.ServerApi
 import ru.lionzxy.taskmanager.data.db.AppDatabase
 import ru.lionzxy.taskmanager.interactor.auth.AuthInteractor
 import ru.lionzxy.taskmanager.interactor.auth.IAuthInteractor
@@ -21,8 +22,8 @@ import ru.lionzxy.taskmanager.repositories.auth.IAuthRepository
 class AuthModule {
     @Provides
     @AuthScope
-    fun provideRepository(sharedPreferences: SharedPreferences, retrofit: Retrofit): IAuthRepository {
-        return AuthRepository(sharedPreferences, retrofit)
+    fun provideRepository(sharedPreferences: SharedPreferences, api: ServerApi): IAuthRepository {
+        return AuthRepository(sharedPreferences, api)
     }
 
 

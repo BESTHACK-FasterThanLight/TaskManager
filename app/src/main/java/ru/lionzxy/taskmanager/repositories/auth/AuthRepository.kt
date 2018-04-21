@@ -3,8 +3,8 @@ package ru.lionzxy.taskmanager.repositories.auth
 import android.content.SharedPreferences
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
 import ru.lionzxy.taskmanager.data.auth.ServerApi
+import ru.lionzxy.taskmanager.data.auth.UserApi
 import ru.lionzxy.taskmanager.data.auth.UserModel
 
 /**
@@ -14,9 +14,7 @@ import ru.lionzxy.taskmanager.data.auth.UserModel
  */
 
 class AuthRepository(private val sharedPreferences: SharedPreferences,
-                     retrofit: Retrofit) : IAuthRepository {
-    val api = retrofit.create(ServerApi::class.java)
-
+                     private val api: ServerApi) : IAuthRepository {
     override fun getToken(): String? {
         val token = sharedPreferences.getString("auth_token", "")
 
@@ -30,7 +28,7 @@ class AuthRepository(private val sharedPreferences: SharedPreferences,
     }
 
     override fun login(login: String, password: String): Single<UserModel> {
-        return api.login(login, password).toSingle { UserModel(login, "") }
+        return api.login(UserApi(null, login, password)).toSingle { UserModel(login, "") }
                 .subscribeOn(Schedulers.io())
                 .doAfterSuccess {
                     putToken(login) // Вставляем токен, если успешно

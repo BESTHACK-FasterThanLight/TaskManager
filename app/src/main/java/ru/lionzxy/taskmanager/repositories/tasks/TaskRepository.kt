@@ -2,6 +2,7 @@ package ru.lionzxy.taskmanager.repositories.tasks
 
 import io.reactivex.Completable
 import io.reactivex.Single
+import ru.lionzxy.taskmanager.data.auth.ServerApi
 import ru.lionzxy.taskmanager.data.model.Project
 import ru.lionzxy.taskmanager.data.model.Task
 
@@ -11,7 +12,7 @@ import ru.lionzxy.taskmanager.data.model.Task
  * @date 20.04.18
  */
 
-class TaskRepository : ITaskRepository {
+class TaskRepository(private val api: ServerApi) : ITaskRepository {
     override fun getProjects(): Single<List<Project>> {
         return Single.just(listOf(Project("test", 1)))
     }

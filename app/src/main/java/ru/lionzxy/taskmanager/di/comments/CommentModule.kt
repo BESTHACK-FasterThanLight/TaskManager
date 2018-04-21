@@ -2,6 +2,7 @@ package ru.lionzxy.taskmanager.di.comments
 
 import dagger.Module
 import dagger.Provides
+import ru.lionzxy.taskmanager.data.auth.ServerApi
 import ru.lionzxy.taskmanager.interactor.comments.CommentInteractor
 import ru.lionzxy.taskmanager.interactor.comments.ICommentInteractor
 import ru.lionzxy.taskmanager.repositories.comments.CommentRepository
@@ -21,14 +22,14 @@ class CommentModule {
 
     @Provides
     @CommentScope
-    fun provideRepo(): ICommentRepository {
-        return CommentRepository()
+    fun provideRepo(api: ServerApi): ICommentRepository {
+        return CommentRepository(api)
     }
 
     @Provides
     @CommentScope
-    fun provideTaskRepository(): ITaskRepository {
-        return TaskRepository()
+    fun provideTaskRepository(api: ServerApi): ITaskRepository {
+        return TaskRepository(api)
     }
 
     @Provides
