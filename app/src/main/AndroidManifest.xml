@@ -22,9 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.register.ui.RegisterActivity" />
-        <activity android:name=".view.task.ui.TaskActivity" />
-        <activity android:name=".view.add_task.ui.AddTaskActivity" />
+        <activity
+            android:name=".view.register.ui.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.task.ui.TaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.add_task.ui.AddTaskActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

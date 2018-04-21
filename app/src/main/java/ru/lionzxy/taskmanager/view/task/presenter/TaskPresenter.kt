@@ -57,9 +57,9 @@ class TaskPresenter : MvpPresenter<TaskView>() {
         }))
     }
 
-    fun sendMessage(text: String, id: Int) {
+    fun sendMessage(text: String, id: Int, secret: Boolean = false) {
         viewState.showProgress(true)
-        disposable.addAll(interactor.sendMessage(text, id)
+        disposable.addAll(interactor.sendMessage(text, id, secret)
                 .toSingleDefault("")
                 .flatMap { interactor.getFullTask(id) }
                 .observeOn(AndroidSchedulers.mainThread())

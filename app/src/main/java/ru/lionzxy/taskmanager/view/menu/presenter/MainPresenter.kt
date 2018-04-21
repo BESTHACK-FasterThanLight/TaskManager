@@ -8,8 +8,10 @@ import ru.lionzxy.taskmanager.App
 import ru.lionzxy.taskmanager.data.model.Project
 import ru.lionzxy.taskmanager.di.tasks.TaskModule
 import ru.lionzxy.taskmanager.interactor.tasks.ITaskInteractor
+import ru.lionzxy.taskmanager.utils.getXposedVersion
 import ru.lionzxy.taskmanager.view.menu.ui.IMainActivity
 import timber.log.Timber
+import java.security.cert.Extension
 import javax.inject.Inject
 
 /**
@@ -33,6 +35,7 @@ class MainPresenter : MvpPresenter<IMainActivity>() {
         loadList()
     }
 
+
     fun loadList() {
         disposable.addAll(interactor.getProjects()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -43,16 +46,6 @@ class MainPresenter : MvpPresenter<IMainActivity>() {
                     Timber.e(it)
                     viewState.onError()
                 }))
-
-        /*
-        disposable.addAll(interactor.getTasks()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    viewState.setTasks(it)
-                }, {
-                    Timber.e(it)
-                    viewState.onError()
-                }))*/
     }
 
     fun openTasks(id: Int) {
@@ -62,6 +55,7 @@ class MainPresenter : MvpPresenter<IMainActivity>() {
     fun createProject(name: String) {
         disposable.addAll(interactor.createProject(Project(name, 0)).subscribe({
             viewState.onProjectCreated()
+            loadList()
         }, {
             Timber.e(it)
             viewState.onError()

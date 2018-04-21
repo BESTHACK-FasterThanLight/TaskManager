@@ -27,6 +27,7 @@ class MainActivity : MvpAppCompatActivity(), IMainActivity {
     lateinit var presenter: MainPresenter
     var drawer: Drawer? = null
     var project: TasksFragment? = null
+    var dialog: MaterialDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,16 +60,16 @@ class MainActivity : MvpAppCompatActivity(), IMainActivity {
     }
 
     override fun onProjectCreated() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        dialog?.dismiss()
     }
 
     private fun createProject() {
-        MaterialDialog.Builder(this)
+        dialog = MaterialDialog.Builder(this)
                 .title("Новый проект")
                 .content("Введите название проекта")
                 .inputType(InputType.TYPE_CLASS_TEXT)
                 .input("Название", "", { dialog, input ->
-                    // Your code
+                    presenter.createProject(input.toString())
                 }).show()
 
     }

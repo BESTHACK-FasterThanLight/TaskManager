@@ -14,7 +14,7 @@ import ru.lionzxy.taskmanager.view.task.ui.TaskStatus
 
 interface ICommentInteractor {
     fun getFullTask(id: Int): Single<Pair<Task, List<Comment>>>
-    fun sendMessage(text: String, id: Int): Completable
+    fun sendMessage(text: String, id: Int, secret: Boolean): Completable
     fun setStatus(status: TaskStatus, id: Int): Single<Pair<Task, List<Comment>>>
 
     fun removeSecretCommit(id: Int): Completable

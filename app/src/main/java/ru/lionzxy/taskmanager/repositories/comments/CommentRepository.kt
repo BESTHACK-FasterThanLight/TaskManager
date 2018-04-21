@@ -18,7 +18,7 @@ class CommentRepository : ICommentRepository {
                 Comment("Text", "Author", true, 2)))
     }
 
-    override fun sendMessage(text: String, id: Int): Completable {
+    override fun sendMessage(text: String, id: Int, secret: Boolean): Completable {
         return Completable.complete()
     }
 

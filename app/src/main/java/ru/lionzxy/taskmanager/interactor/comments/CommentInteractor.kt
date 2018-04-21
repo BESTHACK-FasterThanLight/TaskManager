@@ -27,8 +27,8 @@ class CommentInteractor(private val repository: ICommentRepository, private val 
         }
     }
 
-    override fun sendMessage(text: String, id: Int): Completable {
-        return repository.sendMessage(text, id)
+    override fun sendMessage(text: String, id: Int, secret: Boolean): Completable {
+        return repository.sendMessage(text, id, secret)
     }
 
     override fun setStatus(status: TaskStatus, id: Int): Single<Pair<Task, List<Comment>>> {

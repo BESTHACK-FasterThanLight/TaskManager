@@ -5,13 +5,9 @@ import android.widget.TextView;
 
 import java.util.TimerTask;
 
-interface OnMinuteEndListener {
-    void onTimeOut();
-}
-
 public class CommentTimer extends TimerTask {
 
-    private int seconds = 60;
+    private int seconds = 10;
     private TextView mTime;
     private Activity mActivity;
     private OnMinuteEndListener callback;

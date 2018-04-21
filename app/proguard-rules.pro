@@ -7,3 +7,6 @@
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 
 -keep class com.tozny.crypto.android.AesCbcWithIntegrity$PrngFixes$* { *; }
+
+-dontwarn kotlin.**
+-repackageclasses

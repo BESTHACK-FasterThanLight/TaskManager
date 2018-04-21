@@ -1,5 +1,6 @@
 package ru.lionzxy.taskmanager.view.auth.presenter
 
+import android.content.SharedPreferences
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -23,6 +24,8 @@ import javax.inject.Inject
 class AuthPresenter : MvpPresenter<IAuthView>() {
     @Inject
     lateinit var authInteractor: IAuthInteractor
+    @Inject
+    lateinit var pref: SharedPreferences
     private val disposable = CompositeDisposable()
 
     init {
@@ -78,6 +81,10 @@ class AuthPresenter : MvpPresenter<IAuthView>() {
             viewState.hidePasswordError()
         }
         return passwordValid && loginValid
+    }
+
+    fun onXposedDetected() {
+        pref.edit().clear().apply()
     }
 
     override fun onDestroy() {

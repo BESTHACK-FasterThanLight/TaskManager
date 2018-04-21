@@ -7,6 +7,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_auth.*
 import ru.lionzxy.taskmanager.R
+import ru.lionzxy.taskmanager.utils.getXposedVersion
 import ru.lionzxy.taskmanager.utils.toast
 import ru.lionzxy.taskmanager.view.auth.presenter.AuthPresenter
 import ru.lionzxy.taskmanager.view.menu.ui.MainActivity
@@ -25,6 +26,10 @@ class AuthActivity : MvpAppCompatActivity(), IAuthView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.setContentView(R.layout.activity_auth)
+
+        if (getXposedVersion(this) != null) {
+            authPresenter.onXposedDetected()
+        }
 
         buttonLogin.setOnClickListener {
             authPresenter.onClickLogin(editTextLogin.text.toString(),

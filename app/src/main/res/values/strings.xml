@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TryToHack</string>
+    <string name="app_name">Task Manager</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -22,7 +22,7 @@
     <string name="auth_activity_password_matcher">Password min length: 4 symbols</string>
     <string name="auth_hint_login">Login</string>
     <string name="auth_hint_password">Password</string>
-    <string name="secret_hint_password">Secret field</string>
+    <string name="secret_hint_password">Email</string>
     <string name="auth_register">Not register yet? Register now!</string>
     <string name="auth_login">Already register? Log In!</string>
     <string name="auth_button_register">Sign in</string>

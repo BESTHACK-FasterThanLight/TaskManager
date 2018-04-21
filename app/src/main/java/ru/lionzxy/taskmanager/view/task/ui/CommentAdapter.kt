@@ -55,7 +55,7 @@ class CommentAdapter(private var comments: List<Comment>,
                 holder.hidden.visibility = View.GONE
                 holder.timerClock?.cancel()
                 holder.timerClock = Timer()
-                holder.timer.text = "01:00"
+                holder.timer.text = "00:11"
                 holder.timerClock?.schedule(CommentTimer(holder.timer, activity, {
                     onRemovePrivate.invoke(comment.id)
                     comments = ArrayList(comments)

@@ -30,6 +30,10 @@ class TaskActivity : MvpAppCompatActivity(), TaskView {
 
         comments.layoutManager = LinearLayoutManager(this)
         send.setOnClickListener { presenter.sendMessage(inputEditText.text.toString(), intent.getIntExtra("id", 0)) }
+        send.setOnLongClickListener {
+            presenter.sendMessage(inputEditText.text.toString(), intent.getIntExtra("id", 0), true)
+            return@setOnLongClickListener true
+        }
         status_todo.setOnClickListener { presenter.setStatus(TaskStatus.TODO, getId()) }
         status_progress.setOnClickListener { presenter.setStatus(TaskStatus.PROGRESS, getId()) }
         status_ready.setOnClickListener { presenter.setStatus(TaskStatus.READY, getId()) }

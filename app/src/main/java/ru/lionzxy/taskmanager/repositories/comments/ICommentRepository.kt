@@ -14,7 +14,7 @@ import ru.lionzxy.taskmanager.view.task.ui.TaskStatus
 
 interface ICommentRepository {
     fun getComments(id: Int): Single<List<Comment>>
-    fun sendMessage(text: String, id: Int): Completable
+    fun sendMessage(text: String, id: Int, secret: Boolean): Completable
     fun setStatus(status: TaskStatus, task: Task): Single<Task>
 
     fun removeSecretCommit(id: Int): Completable
